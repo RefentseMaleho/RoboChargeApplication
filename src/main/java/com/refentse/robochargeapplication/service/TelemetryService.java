@@ -1,12 +1,12 @@
 package com.refentse.robochargeapplication.service;
 
-import com.refentse.robochargeapplication.repository.RobotRepository;
 import com.refentse.robochargeapplication.dto.ChargingResponse;
 import com.refentse.robochargeapplication.model.ChargingDecision;
 import com.refentse.robochargeapplication.model.Telemetry;
+import com.refentse.robochargeapplication.repository.RobotRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.Collection;
-import com.refentse.robochargeapplication.model.Telemetry;
 
 @Service
 public class TelemetryService {
@@ -20,8 +20,8 @@ public class TelemetryService {
     public ChargingResponse processTelemetry(Telemetry telemetry) {
 
         robotRepository.save(telemetry);
-        ChargingDecision decision;
 
+        ChargingDecision decision;
 
         if (telemetry.getBatteryLevel() >= 95) {
             decision = ChargingDecision.FULLY_CHARGED;
@@ -49,19 +49,19 @@ public class TelemetryService {
                     message = "Robot should proceed to the nearest charging station.";
         }
 
-        public Collection<Telemetry> getAllRobots() {
-            return robotRepository.findAll();
-        }
-
-        public Telemetry getRobot(String name) {
-            return robotRepository.findByName(name);
-        }
-
         return new ChargingResponse(
                 telemetry.getRobotName(),
                 telemetry.getBatteryLevel(),
                 decision,
                 message
         );
+    }
+
+    public Collection<Telemetry> getAllRobots() {
+        return robotRepository.findAll();
+    }
+
+    public Telemetry getRobot(String name) {
+        return robotRepository.findByName(name);
     }
 }
