@@ -2,6 +2,10 @@ RoboChargeApplication 🤖🔋
 
 Data Engineering Elective Project
 
+Your verification code:
+
+WTC-9P7L6GF8
+
 RoboChargeApplication is a robotics-focused data processing and backend application built with Java and Spring Boot.
 
 The project demonstrates a simple data engineering workflow for collecting robot telemetry, processing the incoming data, storing it, and making the processed information available through REST APIs.
